@@ -4,6 +4,7 @@ from datetime import datetime
 from flask_login import login_user, LoginManager, login_required, logout_user, UserMixin, current_user
 from sqlalchemy.orm import relationship
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///chat.db'
@@ -110,6 +111,12 @@ def register():
         login_user(user)
         return redirect(url_for('get_all_comments'))
     return render_template('register.html')
+
+
+@app.route('/sama')
+def secret():
+    users = User.query.all()
+    return render_template('secrets.html',users=users)
 
 
 if __name__ == '__main__':
