@@ -64,6 +64,7 @@ def get_all_comments():
             return redirect(url_for('index'))
 
         # Add the comment to the database
+        print(current_user)
         new_message = Comment(content=comment, comment_author=current_user)
         db.session.add(new_message)
         db.session.commit()
