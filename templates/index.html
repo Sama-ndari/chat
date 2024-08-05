@@ -75,7 +75,7 @@
                     {% endfor %}
                 </ul>
                 <!-- Chat Input Form -->
-                {% if current_user is not none %}
+                {% if current_user.is_authenticated %}
 
                     <form action="{{ url_for('get_all_comments') }}" method="post" class="mt-3">
                         <div class="input-group">
