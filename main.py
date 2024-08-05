@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import login_user, LoginManager, login_required, logout_user, UserMixin, current_user
@@ -107,7 +107,6 @@ def register():
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        session['user_id'] = user.id
         return redirect(url_for('get_all_comments'))
     return render_template('register.html')
 
